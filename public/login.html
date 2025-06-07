@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login</title>
+ <link rel="stylesheet" href="/css/login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Admin Login</h2>
+    <form id="loginForm" method="POST" action="/login"> <!-- Ensure your backend handles POST to /login -->
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder=" " required />
+        <label for="username">Username</label>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" name="password" placeholder=" " required />
+        <label for="password">Password</label>
+      </div>
+      <button class="login-btn" type="submit">Log In</button>
+    </form>
+    <div id="errorMessage" class="error-message" style="display:none; margin-top: 1rem;"></div>
+    <script>
+      // Client-side display of error messages passed via query parameter
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('error')) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = decodeURIComponent(params.get('error'));
+        errorDiv.style.display = 'block';
+      }
+
+      // Optional: If you want to handle login via JS fetch (more SPA-like)
+      // const loginForm = document.getElementById('loginForm');
+      // if (loginForm) {
+      //   loginForm.addEventListener('submit', async function(event) {
+      //     event.preventDefault();
+      //     const username = document.getElementById('username').value;
+      //     const password = document.getElementById('password').value;
+      //     const errorDiv = document.getElementById('errorMessage');
+      //     errorDiv.style.display = 'none'; // Hide previous errors
+
+      //     try {
+      //       const response = await fetch('/login', { // Adjust to your API endpoint
+      //         method: 'POST',
+      //         headers: { 'Content-Type': 'application/json' },
+      //         body: JSON.stringify({ username, password })
+      //       });
+      //       const data = await response.json();
+      //       if (response.ok && data.success) { // Assuming server returns { success: true }
+      //         window.location.href = '/admin.html'; // Redirect to admin panel
+      //       } else {
+      //         errorDiv.textContent = data.message || 'Login failed. Please check your credentials.';
+      //         errorDiv.style.display = 'block';
+      //       }
+      //     } catch (err) {
+      //       console.error('Login error:', err);
+      //       errorDiv.textContent = 'An error occurred. Please try again.';
+      //       errorDiv.style.display = 'block';
+      //     }
+      //   });
+      // }
+    </script>
+  </div>
+</body>
+</html>
