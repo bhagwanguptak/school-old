@@ -631,7 +631,7 @@ Sent from the school website.`;
 
 // --- Server Start ---
 const SERVER_PORT = process.env.PORT || 3000;
-app.listen(SERVER_PORT, () => {
+app.listen(SERVER_PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${SERVER_PORT}`);
   console.log(`Serving static files from: ${path.join(__dirname, 'public')}`);
   console.log(`Serving uploads from: ${path.join(__dirname, 'public', 'uploads')}`);

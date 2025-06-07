@@ -1,0 +1,143 @@
+*   {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #d4fc79, #96e6a1);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden; /* Prevent scrollbars from gradient animation */
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
+      padding: 3rem 2.5rem;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Softer, larger shadow */
+      max-width: 420px; /* Slightly wider */
+      width: 90%;
+      text-align: center;
+      animation: fadeInScaleUp 0.8s ease-out; /* Smoother animation */
+    }
+
+    @keyframes fadeInScaleUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    .login-container h2 {
+      margin-bottom: 2.2rem; /* More spacing */
+      font-size: 2.2rem; /* Larger title */
+      color: #2c3e50; /* Darker, more professional color */
+      font-weight: 600;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 1.8rem; /* More spacing */
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 18px; /* More padding */
+      border: 1px solid #ced4da; /* Standard Bootstrap border color */
+      border-radius: 10px; /* More rounded */
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa; /* Light background for input */
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 18px;
+      top: 15px; /* Adjusted for padding */
+      color: #6c757d; /* Bootstrap muted text color */
+      font-size: 1rem;
+      pointer-events: none;
+      transition: all 0.2s ease-out; /* Smoother transition */
+      background-color: transparent; /* Ensure no bg clipping */
+      padding: 0 4px;
+    }
+
+    .form-group input:focus {
+      border-color: #6c63ff; /* Original focus color */
+      box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25); /* Bootstrap-like focus shadow */
+      background-color: #fff;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -10px; /* Position above input */
+      left: 14px;
+      font-size: 0.8rem; /* Smaller label when active */
+      color: #6c63ff;
+      background-color: #fff; /* Background to cover input border */
+      border-radius: 4px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px; /* More padding */
+      background: linear-gradient(90deg, #6c63ff, #57a9ff); /* Updated gradient */
+      color: white;
+      font-size: 1.1rem; /* Larger text */
+      font-weight: 600; /* Bolder */
+      border: none;
+      border-radius: 50px; /* Pill shape */
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+      box-shadow: 0 8px 20px rgba(108, 99, 255, 0.35);
+      background-size: 200% auto;
+      background-position: left center;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px); /* More pronounced hover */
+      box-shadow: 0 12px 25px rgba(108, 99, 255, 0.45);
+      background-position: right center; /* Animate gradient on hover */
+    }
+
+    .login-btn:active {
+      transform: scale(0.97); /* Slightly more noticeable active state */
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+    }
+
+    .error-message {
+      color: #dc3545; /* Bootstrap danger color */
+      background-color: #f8d7da; /* Bootstrap danger background */
+      border: 1px solid #f5c6cb; /* Bootstrap danger border */
+      padding: 0.75rem 1.25rem;
+      margin-top: 1.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 2.5rem 1.5rem; /* Adjusted padding for smaller screens */
+      }
+      .login-container h2 {
+        font-size: 1.8rem;
+      }
+    }

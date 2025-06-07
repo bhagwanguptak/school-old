@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title  id="pageTitle">School Name | Nurturing Young Minds</title>
+  <meta name="description" id="metaDescription" content="Join our vibrant learning community. Discover programs from Playschool to Class X.">
+  <meta name="keywords" content="school, education, learning, admissions, academics">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/admin.js" defer></script> 
+  <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="" alt="School Logo" class="school-logo me-2" id="logoURL" style="height: 45px;">
+        <span class="school-name fw-bold" id="navSchoolNameDisplay">School</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#admissions">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#academics">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#facilities">Facilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section d-flex align-items-center text-white">
+    <div class="container text-center">
+      <h1 class="display-3 fw-bold mb-3 reveal school-name" id="heroSchoolName">School Name Placeholder</h1>
+      <p class="lead mb-4 reveal school-tagline" id="heroSchoolTagline" style="font-size: 1.75rem;">Empowering young minds from Playschool to Class X</p>
+      <div class="reveal">
+        <a href="#admissions" class="btn btn-primary btn-lg hero-cta-button">
+          Explore Admissions <i class="bi bi-arrow-right-short"></i>
+        </a>
+        <a href="#about" class="btn btn-outline-light btn-lg ms-2 hero-cta-button">
+          Learn More <i class="bi bi-info-circle"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <a href="#carousel-section-anchor"><i class="bi bi-chevron-down"></i></a>
+    </div>
+  </section>
+  
+  <div id="carousel-section-anchor"></div>
+
+  <!-- Carousel Section -->
+  <section class="carousel-section">
+    <div class="container">
+      <!-- <div class="text-center mb-5 reveal">
+       <h2 class="section-title">Campus Highlights</h2>
+        <p class="section-subtitle">A glimpse into our vibrant school life and modern facilities.</p> 
+      </div>-->
+      <div id="schoolCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+        <div class="carousel-indicators" id="carousel-indicators">
+            <!-- Indicators will be populated by JS -->
+        </div>
+        <div class="carousel-inner" id="carousel-inner">
+            <!-- Carousel items will be populated by JS -->
+            <!-- Default/fallback item will be handled by JS if no images are configured -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#schoolCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#schoolCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 section-padding bg-light-subtle">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 reveal-left">
+          <img id="aboutUsImage" src="" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" alt="About the school">
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <h2 class="section-title mb-3">Welcome to <span class="school-name" id="aboutSchoolName">Our School</span></h2>
+          <div class="lead about-us-info">
+            <!-- Content populated by admin.js -->
+          </div>
+          <a href="#contact" class="btn btn-primary mt-3">
+            Get in Touch <i class="bi bi-envelope-fill ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admissions -->
+  <section id="admissions" class="py-5 section-padding text-black">
+    <div class="container text-center">
+      <div class="reveal">
+        <i class="bi bi-door-open-fill display-3 mb-3 text-white"></i>
+        <h2 class="section-title mb-3 text-black ">Admissions Open for <span data-current-year></span>-<span data-next-year></span></h2>
+        <div class="admission-info lead mb-4" style="max-width: 700px; margin-left:auto; margin-right:auto;">
+            <!-- Content populated by admin.js -->
+        </div>
+        <a href="#" class="btn btn-light btn-lg admission-cta-button">
+          Download Prospectus <i class="bi bi-download ms-2"></i>
+        </a>
+         <a href="#contact" class="btn btn-outline-light btn-lg ms-md-3 mt-3 mt-md-0 admission-cta-button">
+          Enquire Now <i class="bi bi-patch-question-fill ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academics -->
+  <section id="academics" class="py-5 section-padding">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <h2 class="section-title">Our Curriculum</h2>
+        <p class="section-subtitle">Focused on holistic development and academic excellence.</p>
+      </div>
+      <div class="row align-items-center">
+        <!-- <div class="col-lg-6 order-lg-2 reveal-right">
+          <img id="academicsImage" src="" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" alt="Academics at school">
+        </div> -->
+        <div class="col-lg-6 order-lg-1 reveal-left academics-info-container"> 
+            <div class="academics-dynamic-content">
+                 <!-- Content populated by admin.js -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities" class="py-5 section-padding bg-light-subtle">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <h2 class="section-title">State-of-the-Art Facilities</h2>
+        <div class="section-subtitle facilities-overview-text">
+            <!-- General facilities intro/outro populated by admin.js -->
+        </div>
+      </div>
+      <div class="row g-4" id="facilityCardsPublicContainer">
+        <!-- Facility cards will be populated here by admin.js -->
+        <!-- Fallback message if no cards are configured will be handled by admin.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+<section id="contact" class="py-5 section-padding">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">We're here to answer your questions. Reach out to us!</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-7 reveal-left">
+          <!-- **** MODIFIED FORM **** -->
+          <form id="mainContactForm" class="row g-3 needs-validation contact-form shadow-lg p-4 p-md-5 rounded h-100" novalidate>
+            <div class="col-md-6">
+              <label for="contactName" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="contactName" name="contactName" placeholder="e.g., Jane Doe" required>
+              <div class="invalid-feedback">Please provide your name.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="contactEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="e.g., jane.doe@example.com" required>
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+            <div class="col-12">
+              <label for="contactSubject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="contactSubject" name="contactSubject" placeholder="e.g., Admission Enquiry" required>
+              <div class="invalid-feedback">Please provide a subject.</div>
+            </div>
+            <div class="col-12">
+              <label for="contactMessage" class="form-label">Your Message</label>
+              <textarea class="form-control" id="contactMessage" name="contactMessage" rows="5" placeholder="Write your message here..." required></textarea>
+              <div class="invalid-feedback">Please enter your message.</div>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary btn-lg contact-submit-button">Send Message <i class="bi bi-send-fill ms-2"></i></button>
+            </div>
+            <!-- For displaying messages from the server -->
+            <div class="col-12 mt-3">
+                <div id="contactFormStatus" role="alert"></div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-5 reveal-right mt-2 mt-lg-0">
+            <div id="mapContainer" class="rounded h-100" style="display:none; min-height: 400px;">
+                <iframe id="schoolMap" title="School Location" width="100%" height="100%" style="border:0; border-radius: var(--border-radius-lg);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+             <p id="mapPlaceholder" class="text-center text-muted mt-3" style="display:block;">Location map will be displayed here once configured.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-custom text-center py-5 bg-dark text-white">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center justify-content-center mb-3" href="#">
+        <img src="" alt="School Logo" class="school-logo me-2" id="footerLogoURL" style="height: 40px;">
+        <span class="school-name fw-bold" id="footerSchoolNameDisplay">School</span>
+      </a>
+      <ul class="list-inline mb-3 footer-nav-links">
+        <li class="list-inline-item"><a href="#about" class="footer-link">About</a></li>
+        <li class="list-inline-item"><a href="#admissions" class="footer-link">Admissions</a></li>
+        <li class="list-inline-item"><a href="#academics" class="footer-link">Academics</a></li>
+        <li class="list-inline-item"><a href="#contact" class="footer-link">Contact</a></li>
+      </ul>
+      <ul class="list-inline mb-4 footer-social-links">
+        <li class="list-inline-item" style="display: none;"><a href="#" id="socialFacebookLink" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a></li>
+        <li class="list-inline-item" style="display: none;"><a href="#" id="socialTwitterLink" class="social-icon" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter-x"></i></a></li>
+        <li class="list-inline-item" style="display: none;"><a href="#" id="socialInstagramLink" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a></li>
+        <li class="list-inline-item" style="display: none;"><a href="#" id="socialLinkedInLink" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a></li>
+        <li class="list-inline-item" style="display: none;"><a href="#" id="socialYouTubeLink" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a></li>
+      </ul>
+      <p class="mb-0">&copy; <span data-current-year></span> <span class="school-name" id="footerCopyrightSchoolName">School</span>. All rights reserved.</p>
+      <p class="small mt-1">Designed with <i class="bi bi-heart-fill text-danger"></i> for the Future of Education.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="#" id="whatsappLink" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" style="display:none;" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+
+  <script>
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+
+      const currentYearElements = document.querySelectorAll('[data-current-year]');
+      const nextYearElements = document.querySelectorAll('[data-next-year]');
+      const currentYear = new Date().getFullYear();
+      currentYearElements.forEach(el => el.textContent = currentYear);
+      nextYearElements.forEach(el => el.textContent = currentYear + 1);
+    })();
+  </script>
+</body>
+</html>
