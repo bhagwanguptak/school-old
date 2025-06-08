@@ -60,8 +60,8 @@ if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
 
 // --- Middlewares ---
 app.use(cors()); // Allow all origins
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // extended: true is generally better
+app.use(bodyParser.json({ limit: '20mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' })); // extended: true is generally better
 
 // Serve static files from 'public' directory (HTML, CSS, client-side JS)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -514,11 +514,11 @@ app.post('/api/submit-contact', async (req, res) => {
   // Fetch contactFormAction and schoolContactEmail from DB settings
   let contactFormActionSetting = process.env.CONTACT_FORM_ACTION_DEFAULT || 'whatsapp';
   let schoolContactEmailSetting = process.env.SCHOOL_CONTACT_EMAIL_TO; // Fallback to .env
-
+  let adminSchoolWhatsappNumber = '';
   try {
     const settingsRow = await new Promise((resolve, reject) => {
-      db.all('SELECT setting_name, setting_value FROM settings WHERE setting_name IN (?, ?)',
-        ['contactFormAction', 'schoolContactEmail'], (err, rows) => {
+      db.all('SELECT setting_name, setting_value FROM settings WHERE setting_name IN (?, ?,?)',
+        ['contactFormAction', 'schoolContactEmail','adminSchoolWhatsappNumber'], (err, rows) => {
         if (err) return reject(err);
         resolve(rows);
       });
@@ -531,6 +531,10 @@ app.post('/api/submit-contact', async (req, res) => {
       if (row.setting_name === 'schoolContactEmail' && row.setting_value) {
         schoolContactEmailSetting = row.setting_value; // Override .env if set in admin
       }
+      if(row.setting_name==='adminSchoolWhatsappNumber' && row.setting_value){
+        adminSchoolWhatsappNumber =row.setting_value;
+        
+      }
     });
 
   } catch (dbError) {
@@ -541,8 +545,9 @@ app.post('/api/submit-contact', async (req, res) => {
   console.log(`Contact Form Action determined: ${contactFormActionSetting}`);
 
   if (contactFormActionSetting === 'whatsapp') {
-    const schoolWhatsAppNumber = process.env.SCHOOL_WHATSAPP_NUMBER;
-    if (!schoolWhatsAppNumber) {
+    const schoolWhatsAppNumberFromEnvFile = process.env.SCHOOL_WHATSAPP_NUMBER;
+     const schoolWhatsAppNumberFromAdminPannel = adminSchoolWhatsappNumber;
+    if (!schoolWhatsAppNumberFromEnvFile && !schoolWhatsAppNumberFromAdminPannel) {
       console.error("SCHOOL_WHATSAPP_NUMBER is not configured for WhatsApp action.");
       return res.status(500).json({
         success: false,
@@ -550,18 +555,24 @@ app.post('/api/submit-contact', async (req, res) => {
       });
     }
 
-    const whatsappMessageBody = `New Contact Form Submission:
+    const whatsappMessageBody = `*New Contact Form Submission:*
 -----------------------------
-Name: ${contactName}
-Email: ${contactEmail}
-Subject: ${contactSubject}
+*Name:* ${contactName}
+*Email:* ${contactEmail}
+*Subject:* ${contactSubject}
 -----------------------------
-Message:
+*Message:*
 ${contactMessage}
 -----------------------------
 Sent from the school website.`;
 
-    const whatsappUrl = `https://wa.me/${schoolWhatsAppNumber}?text=${encodeURIComponent(whatsappMessageBody)}`;
+    whatsappUrl='';
+    if (schoolWhatsAppNumberFromEnvFile){
+      whatsappUrl = `https://wa.me/${schoolWhatsAppNumberFromEnvFile}?text=${encodeURIComponent(whatsappMessageBody)}`;
+    }else{
+      whatsappUrl = `https://wa.me/${schoolWhatsAppNumberFromAdminPannel}?text=${encodeURIComponent(whatsappMessageBody)}`;
+    }
+   
     console.log(`Preparing WhatsApp redirect to: ${whatsappUrl}`);
     return res.json({
       success: true,

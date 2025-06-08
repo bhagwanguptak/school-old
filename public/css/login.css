@@ -141,3 +141,17 @@
         font-size: 1.8rem;
       }
     }
+    .form-group input#password {
+      padding-right: 45px; 
+    
+    }
+    .form-group #togglePassword {
+      position: absolute;
+      right: 18px; 
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c757d; 
+      font-size: 1.2rem; 
+      z-index: 2; /* Ensure it's above input text */
+    }

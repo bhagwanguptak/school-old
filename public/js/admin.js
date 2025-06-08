@@ -91,7 +91,9 @@ async function fetchSettings() {
     const serverSettings = await response.json();
     
     const defaults = {
-      schoolName: '', defaultHeroTitle: 'Welcome to Our School', schoolTagline: '', defaultHeroTagline: 'Nurturing Future Leaders',
+      schoolName: '', defaultHeroTitle: 'Welcome to Our School', 
+      schoolTagline: '', defaultHeroTagline: 'Nurturing Future Leaders',
+      schoolLocationFooter: '', defaultSchoolLocationFooter: 'No location available contact admin.',
       logoURL: '', defaultLogoURL: '/uploads/logo-default.png',
       aboutUsImageURL: '', defaultAboutImageURL: '/uploads/about-us-default.jpg',
       academicsImageURL: '', defaultAcademicsImageURL: '/uploads/academics-default.jpg',
@@ -261,6 +263,7 @@ async function loadAdminData() {
       getElement('schoolName').value = settings.schoolName || '';
       getElement('defaultHeroTitle').value = settings.defaultHeroTitle || '';
       getElement('school-tagline').value = settings.schoolTagline || '';
+      getElement('school-location-footer').value = settings.schoolLocationFooter || '';
       getElement('defaultHeroTagline').value = settings.defaultHeroTagline || '';
       
       getElement('currentLogoURL').value = settings.logoURL || '';
@@ -429,6 +432,7 @@ async function saveAdminSettings() {
     schoolName: getElement('schoolName')?.value || '',
     defaultHeroTitle: getElement('defaultHeroTitle')?.value || '',
     schoolTagline: getElement('school-tagline')?.value || '',
+    schoolLocationFooter:getElement('school-location-footer')?.value || '',
     defaultHeroTagline: getElement('defaultHeroTagline')?.value || '',
     logoURL: finalLogoURL, defaultLogoURL: getElement('defaultLogoURL')?.value || '',
     aboutUsImageURL: finalAboutImageURL, defaultAboutImageURL: getElement('defaultAboutImageURL')?.value || '',
@@ -564,6 +568,7 @@ function applyBaseSettings(settings) {
 function applyPublicSchoolDisplaySettings(settings) {
     const finalSchoolName = settings.schoolName || settings.defaultHeroTitle || 'Our School';
     const finalTagline = settings.schoolTagline || settings.defaultHeroTagline || 'Nurturing Young Minds';
+    const finalSchoolLocationFooter = settings.schoolLocationFooter || settings.defaultSchoolLocationFooter || 'No location available contact admin.';
     
     getElement('pageTitle').textContent = `${finalSchoolName} | ${finalTagline.substring(0, 50)}`;
     getElement('metaDescription').content = `Welcome to ${finalSchoolName}. ${finalTagline}. Discover our programs.`;
@@ -581,6 +586,7 @@ function applyPublicSchoolDisplaySettings(settings) {
 
     getElement('aboutUsImage').src = settings.aboutUsImageURL || settings.defaultAboutImageURL;
     getElement('aboutUsImage').alt = `About ${finalSchoolName}`;
+    getElement('school-location-footer').textContent=finalSchoolLocationFooter;
     
     const academicsImageEl = getElement('academicsImage'); // This element was commented out in school.html
     if(academicsImageEl) {
